@@ -1,3 +1,21 @@
+// ===== DARK / LIGHT MODE TOGGLE =====
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon = document.getElementById('themeIcon');
+
+// Load saved preference
+if (localStorage.getItem('theme') === 'light') {
+  document.body.classList.add('light-mode');
+  themeIcon.classList.replace('fa-sun', 'fa-moon');
+}
+
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('light-mode');
+  const isLight = document.body.classList.contains('light-mode');
+  themeIcon.classList.toggle('fa-sun', !isLight);
+  themeIcon.classList.toggle('fa-moon', isLight);
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+});
+
 // ===== TYPEWRITER EFFECT =====
 const typewriterEl = document.getElementById('typewriter');
 const phrases = [
@@ -9,9 +27,17 @@ const phrases = [
 let phraseIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
+let currentPhrases = [...phrases];
+
+window.updateTypewriterPhrases = function(newPhrases) {
+  currentPhrases = newPhrases;
+  phraseIndex = 0;
+  charIndex = 0;
+  isDeleting = false;
+};
 
 function typeWriter() {
-  const current = phrases[phraseIndex];
+  const current = currentPhrases[phraseIndex % currentPhrases.length];
   if (isDeleting) {
     typewriterEl.textContent = current.substring(0, charIndex - 1);
     charIndex--;
@@ -26,7 +52,7 @@ function typeWriter() {
   }
   if (isDeleting && charIndex === 0) {
     isDeleting = false;
-    phraseIndex = (phraseIndex + 1) % phrases.length;
+    phraseIndex = (phraseIndex + 1) % currentPhrases.length;
   }
 
   setTimeout(typeWriter, isDeleting ? 60 : 100);
@@ -108,50 +134,135 @@ revealElements.forEach(el => {
 // ===== CONTACT FORM (saves to MongoDB) =====
 const contactForm = document.getElementById('contactForm');
 
+// Email validation error messages per language
+const emailErrors = {
+  en: {
+    invalid:     '⚠️ Please enter a valid email address.',
+    noExist:     '❌ This email doesn\'t exist or can\'t receive mail. Please re-enter a real email.',
+    disposable:  '❌ Disposable emails are not allowed. Please use your real email.',
+    sending:     'Verifying & Sending...',
+    sent:        'Message Sent! ✓',
+    failed:      'Failed. Try again.',
+    offline:     'Server offline. Try again later.'
+  },
+  fr: {
+    invalid:     '⚠️ Veuillez entrer une adresse email valide.',
+    noExist:     '❌ Cet email n\'existe pas ou ne peut pas recevoir de messages. Veuillez re-saisir un vrai email.',
+    disposable:  '❌ Les emails jetables ne sont pas autorisés. Utilisez votre vrai email.',
+    sending:     'Vérification en cours...',
+    sent:        'Message envoyé! ✓',
+    failed:      'Échec. Réessayez.',
+    offline:     'Serveur hors ligne. Réessayez plus tard.'
+  },
+  rw: {
+    invalid:     '⚠️ Injiza aderesi ya imeli nyayo.',
+    noExist:     '❌ Iyi imeli ntibaho cyangwa ntishobora kwakira ubutumwa. Ongera winjize imeli nyayo.',
+    disposable:  '❌ Imeli z\'agateganyo ntizemewe. Koresha imeli yawe nyayo.',
+    sending:     'Gusuzuma no kohereza...',
+    sent:        'Ubutumwa bwoherejwe! ✓',
+    failed:      'Byanze. Ongera ugerageze.',
+    offline:     'Seriveri irafunze. Ongera ugerageze.'
+  }
+};
+
+// Show inline error under email input
+function showEmailError(msg) {
+  let errEl = document.getElementById('emailError');
+  if (!errEl) {
+    errEl = document.createElement('p');
+    errEl.id = 'emailError';
+    errEl.style.cssText = 'color:#f87171;font-size:0.82rem;margin-top:-0.5rem;margin-bottom:0.3rem;padding-left:0.2rem;';
+    const emailGroup = contactForm.querySelectorAll('.form-group')[1];
+    emailGroup.after(errEl);
+  }
+  errEl.textContent = msg;
+  // Highlight email input
+  const emailInput = contactForm.querySelectorAll('input')[1];
+  emailInput.style.borderColor = '#f87171';
+  emailInput.style.boxShadow = '0 0 0 3px rgba(248,113,113,0.2)';
+}
+
+function clearEmailError() {
+  const errEl = document.getElementById('emailError');
+  if (errEl) errEl.remove();
+  const emailInput = contactForm.querySelectorAll('input')[1];
+  emailInput.style.borderColor = '';
+  emailInput.style.boxShadow = '';
+}
+
+// Clear error when user starts retyping email
+contactForm.querySelectorAll('input')[1]?.addEventListener('input', clearEmailError);
+
 contactForm.addEventListener('submit', async (e) => {
   e.preventDefault();
+  clearEmailError();
+
   const btn = contactForm.querySelector('button[type="submit"]');
   const inputs = contactForm.querySelectorAll('input, textarea');
+  const lang = localStorage.getItem('lang') || 'en';
+  const t = emailErrors[lang] || emailErrors.en;
 
-  const name = inputs[0].value.trim();
-  const email = inputs[1].value.trim();
+  const name    = inputs[0].value.trim();
+  const email   = inputs[1].value.trim();
   const message = inputs[2].value.trim();
 
-  btn.textContent = 'Sending...';
+  // Basic format check before hitting server
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    showEmailError(t.invalid);
+    inputs[1].focus();
+    return;
+  }
+
+  btn.textContent = t.sending;
   btn.disabled = true;
 
   try {
-    const response = await fetch('http://localhost:3000/api/contact', {
+    const response = await fetch(
+      window.location.hostname === 'localhost'
+        ? 'http://localhost:3000/api/contact'
+        : '/api/contact',
+      {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, email, message })
     });
-
     const data = await response.json();
 
     if (response.ok) {
-      btn.innerHTML = 'Message Sent! ✓';
+      btn.innerHTML = t.sent;
       btn.style.background = '#16a34a';
       contactForm.reset();
       setTimeout(() => {
-        btn.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
+        btn.innerHTML = `${t.sent.replace('✓','').trim()} <i class="fas fa-paper-plane"></i>`;
         btn.style.background = '';
         btn.disabled = false;
       }, 3000);
     } else {
-      btn.innerHTML = 'Failed. Try again.';
-      btn.style.background = '#dc2626';
-      setTimeout(() => {
-        btn.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
+      // Show server-side email validation error inline
+      if (data.valid === false) {
+        showEmailError(data.message || t.noExist);
+        inputs[1].focus();
+      } else {
+        btn.innerHTML = t.failed;
+        btn.style.background = '#dc2626';
+      }
+      btn.disabled = false;
+      if (data.valid !== false) {
+        setTimeout(() => {
+          btn.innerHTML = `Send Message <i class="fas fa-paper-plane"></i>`;
+          btn.style.background = '';
+        }, 3000);
+      } else {
+        btn.innerHTML = `Send Message <i class="fas fa-paper-plane"></i>`;
         btn.style.background = '';
-        btn.disabled = false;
-      }, 3000);
+      }
     }
   } catch (err) {
-    btn.innerHTML = 'Server offline. Try again later.';
+    btn.innerHTML = t.offline;
     btn.style.background = '#dc2626';
     setTimeout(() => {
-      btn.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
+      btn.innerHTML = `Send Message <i class="fas fa-paper-plane"></i>`;
       btn.style.background = '';
       btn.disabled = false;
     }, 3000);
@@ -183,7 +294,10 @@ window.addEventListener('scroll', () => {
 // ===== LOAD CV DATA FROM MONGODB =====
 async function loadProfileData() {
   try {
-    const response = await fetch('http://localhost:3000/api/profile');
+    const url = window.location.hostname === 'localhost'
+      ? 'http://localhost:3000/api/profile'
+      : '/api/profile';
+    const response = await fetch(url);
     if (!response.ok) return; // silently fail, static content stays
     const profile = await response.json();
 

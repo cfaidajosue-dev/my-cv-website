@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cyiza Faida Josue | CV</title>
+  <link rel="icon" type="image/jpeg" href="assets/images/WIN_20260501_11_34_51_Pro.jpg" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
@@ -13,15 +14,32 @@
   <nav class="navbar">
     <div class="nav-logo">CFJ</div>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#hobbies">Hobbies</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about" data-i18n="nav.about">About</a></li>
+      <li><a href="#hobbies" data-i18n="nav.hobbies">Hobbies</a></li>
+      <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+      <li><a href="#education" data-i18n="nav.education">Education</a></li>
+      <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
     </ul>
-    <div class="hamburger" id="hamburger">
-      <span></span><span></span><span></span>
+    <div class="nav-right">
+      <div class="lang-switcher" id="langSwitcher">
+        <button class="lang-btn" id="langBtn">
+          <i class="fas fa-globe"></i>
+          <span id="currentLang">EN</span>
+          <i class="fas fa-chevron-down lang-arrow"></i>
+        </button>
+        <div class="lang-dropdown" id="langDropdown">
+          <button class="lang-option active" data-lang="en">🇬🇧 English</button>
+          <button class="lang-option" data-lang="fr">🇫🇷 Français</button>
+          <button class="lang-option" data-lang="rw">🇷🇼 Kinyarwanda</button>
+        </div>
+      </div>
+      <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode">
+        <i class="fas fa-sun" id="themeIcon"></i>
+      </button>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
     </div>
   </nav>
 
@@ -35,29 +53,29 @@
         <div class="avatar-badge"><i class="fas fa-circle-check"></i> Available</div>
         <div class="avatar-glow"></div>
       </div>
-      <p class="hero-greeting">Hello, I'm</p>
+      <p class="hero-greeting" data-i18n="hero.greeting">Hello, I'm</p>
       <h1 class="hero-name">Cyiza Faida <span class="name-highlight">Josue</span></h1>
       <h2 class="hero-title"><span id="typewriter"></span><span class="cursor">|</span></h2>
-      <p class="hero-sub">S5 Student in Rwanda · Passionate about building software that matters</p>
+      <p class="hero-sub" data-i18n="hero.sub">S5 Student in Rwanda · Passionate about building software that matters</p>
       <div class="hero-stats">
         <div class="stat-item">
           <span class="stat-num">6+</span>
-          <span class="stat-label">Skills</span>
+          <span class="stat-label" data-i18n="hero.skills">Skills</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
           <span class="stat-num">2+</span>
-          <span class="stat-label">Projects</span>
+          <span class="stat-label" data-i18n="hero.projects">Projects</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
           <span class="stat-num">S5</span>
-          <span class="stat-label">Level</span>
+          <span class="stat-label" data-i18n="hero.level">Level</span>
         </div>
       </div>
       <div class="hero-buttons">
-        <a href="#contact" class="btn btn-primary"><i class="fas fa-envelope"></i> Get In Touch</a>
-        <a href="#projects" class="btn btn-outline"><i class="fas fa-folder-open"></i> View Projects</a>
+        <a href="#contact" class="btn btn-primary"><i class="fas fa-envelope"></i> <span data-i18n="hero.cta1">Get In Touch</span></a>
+        <a href="#projects" class="btn btn-outline"><i class="fas fa-folder-open"></i> <span data-i18n="hero.cta2">View Projects</span></a>
       </div>
     </div>
     <div class="hero-scroll">
@@ -68,38 +86,38 @@
   <!-- ABOUT -->
   <section class="section" id="about">
     <div class="container">
-      <h2 class="section-title">About <span>Me</span></h2>
+      <h2 class="section-title" data-i18n="about.title">About <span data-i18n="about.titleSpan">Me</span></h2>
       <div class="about-content">
         <div class="about-text">
-          <p>
+          <p data-i18n="about.p1">
             Hi! I'm <strong>Cyiza Faida Josue</strong>, a passionate high school student in S5 
             studying Software Development. I love turning ideas into reality through code and 
             I'm always eager to learn new technologies and improve my skills.
           </p>
-          <p>
+          <p data-i18n="about.p2">
             I believe that software development is not just about writing code — it's about 
             solving real problems and creating meaningful experiences for people.
           </p>
           <div class="about-info">
             <div class="info-item">
               <i class="fas fa-graduation-cap"></i>
-              <span>S5 — Software Development</span>
+              <span data-i18n="about.info1">S5 — Software Development</span>
             </div>
             <div class="info-item">
               <i class="fas fa-map-marker-alt"></i>
-              <span>Shyorongi Sector, Rwanda</span>
+              <span data-i18n="about.info2">Shyorongi Sector, Rwanda</span>
             </div>
             <div class="info-item">
               <i class="fas fa-city"></i>
-              <span>Born in Kigali</span>
+              <span data-i18n="about.info3">Born in Kigali</span>
             </div>
             <div class="info-item">
               <i class="fas fa-code"></i>
-              <span>Aspiring Software Developer</span>
+              <span data-i18n="about.info4">Aspiring Software Developer</span>
             </div>
             <div class="info-item">
               <i class="fas fa-briefcase-slash"></i>
-              <span>Not Yet Employed</span>
+              <span data-i18n="about.info5">Not Yet Employed</span>
             </div>
           </div>
         </div>
@@ -110,13 +128,13 @@
   <!-- HOBBIES -->
   <section class="section section-alt" id="hobbies">
     <div class="container">
-      <h2 class="section-title">My <span>Hobbies</span></h2>
-      <p class="hobbies-intro">Outside of coding, I love staying active and having fun on the football pitch.</p>
+      <h2 class="section-title">My <span data-i18n="hobbies.title">Hobbies</span></h2>
+      <p class="hobbies-intro" data-i18n="hobbies.intro">Outside of coding, I love staying active and having fun on the football pitch.</p>
       <div class="hobbies-grid">
         <div class="hobby-card hobby-main">
           <div class="hobby-icon-wrap"><i class="fas fa-futbol"></i></div>
-          <h3>Football</h3>
-          <p>Playing football is my favourite way to unwind. I enjoy the teamwork, energy, and excitement the game brings.</p>
+          <h3 data-i18n="hobbies.football">Football</h3>
+          <p data-i18n="hobbies.footballDesc">Playing football is my favourite way to unwind. I enjoy the teamwork, energy, and excitement the game brings.</p>
         </div>
         <div class="football-images">
           <div class="football-img-card">
@@ -143,48 +161,48 @@
   <!-- SKILLS -->
   <section class="section section-alt" id="skills">
     <div class="container">
-      <h2 class="section-title">My <span>Skills</span></h2>
+      <h2 class="section-title">My <span data-i18n="nav.skills">Skills</span></h2>
       <div class="skills-grid">
 
         <div class="skill-card">
           <div class="skill-icon"><i class="fab fa-html5"></i></div>
           <h3>HTML</h3>
-          <p>Building structured web pages</p>
+          <p data-i18n="skill.html">Building structured web pages</p>
           <div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div>
         </div>
 
         <div class="skill-card">
           <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
           <h3>CSS</h3>
-          <p>Styling and responsive design</p>
+          <p data-i18n="skill.css">Styling and responsive design</p>
           <div class="skill-bar"><div class="skill-fill" data-width="75%"></div></div>
         </div>
 
         <div class="skill-card">
           <div class="skill-icon"><i class="fab fa-js"></i></div>
           <h3>JavaScript</h3>
-          <p>Adding interactivity to websites</p>
+          <p data-i18n="skill.js">Adding interactivity to websites</p>
           <div class="skill-bar"><div class="skill-fill" data-width="65%"></div></div>
         </div>
 
         <div class="skill-card">
           <div class="skill-icon"><i class="fab fa-python"></i></div>
           <h3>Python</h3>
-          <p>Programming logic and scripting</p>
+          <p data-i18n="skill.python">Programming logic and scripting</p>
           <div class="skill-bar"><div class="skill-fill" data-width="70%"></div></div>
         </div>
 
         <div class="skill-card">
           <div class="skill-icon"><i class="fas fa-database"></i></div>
           <h3>Databases</h3>
-          <p>Basic SQL and data management</p>
+          <p data-i18n="skill.db">Basic SQL and data management</p>
           <div class="skill-bar"><div class="skill-fill" data-width="60%"></div></div>
         </div>
 
         <div class="skill-card">
           <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
           <h3>Git</h3>
-          <p>Version control basics</p>
+          <p data-i18n="skill.git">Version control basics</p>
           <div class="skill-bar"><div class="skill-fill" data-width="55%"></div></div>
         </div>
 
@@ -195,26 +213,26 @@
   <!-- EDUCATION -->
   <section class="section" id="education">
     <div class="container">
-      <h2 class="section-title">My <span>Education</span></h2>
+      <h2 class="section-title">My <span data-i18n="nav.education">Education</span></h2>
       <div class="timeline">
 
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <span class="timeline-date">Current — S5</span>
-            <h3>Software Development</h3>
-            <p class="timeline-school">High School</p>
-            <p>Studying core software development concepts including programming, web development, databases, and software engineering principles.</p>
+            <span class="timeline-date" data-i18n="edu.date1">Current — S5</span>
+            <h3 data-i18n="edu.field">Software Development</h3>
+            <p class="timeline-school" data-i18n="edu.school">High School</p>
+            <p data-i18n="edu.desc1">Studying core software development concepts including programming, web development, databases, and software engineering principles.</p>
           </div>
         </div>
 
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <span class="timeline-date">Completed — S4</span>
-            <h3>Software Development</h3>
-            <p class="timeline-school">High School</p>
-            <p>Completed foundational courses in programming and computer science fundamentals.</p>
+            <span class="timeline-date" data-i18n="edu.date2">Completed — S4</span>
+            <h3 data-i18n="edu.field">Software Development</h3>
+            <p class="timeline-school" data-i18n="edu.school">High School</p>
+            <p data-i18n="edu.desc2">Completed foundational courses in programming and computer science fundamentals.</p>
           </div>
         </div>
 
@@ -225,13 +243,13 @@
   <!-- PROJECTS -->
   <section class="section section-alt" id="projects">
     <div class="container">
-      <h2 class="section-title">My <span>Projects</span></h2>
+      <h2 class="section-title">My <span data-i18n="nav.projects">Projects</span></h2>
       <div class="projects-grid">
 
         <div class="project-card">
           <div class="project-icon"><i class="fas fa-globe"></i></div>
-          <h3>Personal CV Website</h3>
-          <p>A responsive personal portfolio website built with HTML, CSS, and JavaScript to showcase my skills and projects.</p>
+          <h3 data-i18n="proj.cv.title">Personal CV Website</h3>
+          <p data-i18n="proj.cv.desc">A responsive personal portfolio website built with HTML, CSS, and JavaScript to showcase my skills and projects.</p>
           <div class="project-tags">
             <span>HTML</span><span>CSS</span><span>JavaScript</span>
           </div>
@@ -239,8 +257,8 @@
 
         <div class="project-card">
           <div class="project-icon"><i class="fas fa-laptop-code"></i></div>
-          <h3>School Project</h3>
-          <p>A software development project built as part of my S5 curriculum, applying programming concepts learned in class.</p>
+          <h3 data-i18n="proj.school.title">School Project</h3>
+          <p data-i18n="proj.school.desc">A software development project built as part of my S5 curriculum, applying programming concepts learned in class.</p>
           <div class="project-tags">
             <span>Python</span><span>Logic</span>
           </div>
@@ -248,10 +266,10 @@
 
         <div class="project-card add-project">
           <div class="project-icon"><i class="fas fa-plus-circle"></i></div>
-          <h3>More Coming Soon</h3>
-          <p>I'm always working on new projects. Stay tuned for more updates!</p>
+          <h3 data-i18n="proj.soon.title">More Coming Soon</h3>
+          <p data-i18n="proj.soon.desc">I'm always working on new projects. Stay tuned for more updates!</p>
           <div class="project-tags">
-            <span>In Progress</span>
+            <span data-i18n="proj.soon.tag">In Progress</span>
           </div>
         </div>
 
@@ -262,22 +280,22 @@
   <!-- CONTACT -->
   <section class="section" id="contact">
     <div class="container">
-      <h2 class="section-title">Get In <span>Touch</span></h2>
+      <h2 class="section-title"><span data-i18n="contact.heading">Get In</span> <span data-i18n="contact.title">Touch</span></h2>
       <div class="contact-wrapper">
         <div class="contact-info">
-          <p>I'm open to collaborations, learning opportunities, and connecting with fellow developers. Feel free to reach out!</p>
+          <p data-i18n="contact.intro">I'm open to collaborations, learning opportunities, and connecting with fellow developers. Feel free to reach out!</p>
           <div class="contact-links">
-            <a href="mailto:cfaidajosue@gmail.com" class="contact-item">
+            <a href="mailto:cfaidajosue@gmail.com" class="contact-item" target="_blank">
               <i class="fas fa-envelope"></i>
               <span>cfaidajosue@gmail.com</span>
             </a>
-            <a href="#" class="contact-item">
+            <a href="https://github.com/cfaidajosue-dev/" class="contact-item" target="_blank">
               <i class="fab fa-github"></i>
-              <span>github.com/yourhandle</span>
+              <span>github.com/cfaidajosue-dev</span>
             </a>
-            <a href="#" class="contact-item">
-              <i class="fab fa-linkedin"></i>
-              <span>linkedin.com/in/yourprofile</span>
+            <a href="https://www.instagram.com/josh_fame2" class="contact-item" target="_blank">
+              <i class="fab fa-instagram"></i>
+              <span>@josh_fame2</span>
             </a>
           </div>
         </div>
@@ -299,7 +317,7 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <p>© 2026 Cyiza Faida Josue. Built with <i class="fas fa-heart"></i> and code.</p>
+    <p data-i18n="footer.text">© 2026 Cyiza Faida Josue. Built with <i class="fas fa-heart"></i> and code.</p>
   </footer>
 
   <!-- CHATBOT -->
@@ -312,26 +330,27 @@
       <div class="chat-header-info">
         <div class="chat-avatar"><i class="fas fa-robot"></i></div>
         <div>
-          <p class="chat-name">Josue's Assistant</p>
-          <p class="chat-status"><span class="status-dot"></span> Online</p>
+          <p class="chat-name" data-i18n="chat.name">Josue's Assistant</p>
+          <p class="chat-status"><span class="status-dot"></span> <span data-i18n="chat.online">Online</span></p>
         </div>
       </div>
       <button class="chat-close" id="chatClose"><i class="fas fa-times"></i></button>
     </div>
     <div class="chat-messages" id="chatMessages">
-      <div class="chat-msg bot">
-        <div class="msg-bubble">
+      <div class="chat-msg bot" id="chatWelcomeMsg">
+        <div class="msg-bubble" data-i18n="chat.welcome">
           Hi! 👋 I'm Josue's AI assistant. Ask me anything about him — his skills, education, projects, or how to contact him!
         </div>
       </div>
     </div>
     <div class="chat-input-area">
-      <input type="text" id="chatInput" placeholder="Ask something about Josue..." />
+      <input type="text" id="chatInput" data-i18n-placeholder="chat.placeholder" placeholder="Ask something about Josue..." />
       <button id="chatSend"><i class="fas fa-paper-plane"></i></button>
     </div>
   </div>
 
   <script src="js/main.js"></script>
   <script src="js/chat.js"></script>
+  <script src="js/i18n.js"></script>
 </body>
 </html>

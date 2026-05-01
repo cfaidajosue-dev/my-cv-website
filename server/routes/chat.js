@@ -6,30 +6,57 @@ require('dotenv').config();
 
 const GROQ_API_KEY = process.env.GROQ_API_KEY;
 
-const SYSTEM_PROMPT = `You are a friendly AI assistant on the personal CV website of Cyiza Faida Josue.
-Your job is to answer questions about Josue based on the following information:
-
+const JOSUE_INFO = `
 NAME: Cyiza Faida Josue
 EDUCATION: Currently in S5 (Senior 5) at high school, studying Software Development in Rwanda.
 SKILLS: HTML, CSS, JavaScript, Python, basic SQL/Databases, Git (version control)
 PASSION: He is passionate about coding and building software that solves real problems.
 EMAIL: cfaidajosue@gmail.com
+GITHUB: https://github.com/cfaidajosue-dev/
+INSTAGRAM: @josh_fame2
 PROJECTS: Personal CV website (HTML, CSS, JS), school software development projects.
 GOAL: To become a skilled software developer.
 LOCATION: Currently living at Shyorongi Sector, Rwanda. Born in Kigali.
 EMPLOYMENT: Not yet employed, currently a student.
 HOBBIES: Loves playing football. It is his favourite way to unwind and he enjoys the teamwork and energy the game brings.
+`;
 
+const SYSTEM_PROMPTS = {
+  en: `You are a friendly AI assistant on the personal CV website of Cyiza Faida Josue.
+Your job is to answer questions about Josue based on the following information:
+${JOSUE_INFO}
 Rules:
+- ALWAYS respond in English.
 - Only answer questions related to Josue or his work/skills/personal life.
 - If asked something unrelated, politely say you can only answer questions about Josue.
 - Keep answers short, friendly, and helpful.
-- If asked for contact info, provide his email: cfaidajosue@gmail.com`;
+- If asked for contact info, provide his email: cfaidajosue@gmail.com`,
+
+  fr: `Tu es un assistant IA sympathique sur le site CV personnel de Cyiza Faida Josue.
+Ton rôle est de répondre aux questions sur Josue en te basant sur les informations suivantes:
+${JOSUE_INFO}
+Règles:
+- TOUJOURS répondre en français.
+- Ne réponds qu'aux questions liées à Josue, son travail, ses compétences ou sa vie personnelle.
+- Si on te pose une question sans rapport, dis poliment que tu ne peux répondre qu'aux questions sur Josue.
+- Garde les réponses courtes, amicales et utiles.
+- Pour les coordonnées, fournis son email: cfaidajosue@gmail.com`,
+
+  rw: `Uri umufasha wa AI uturanye ku rubuga rwa CV rwa Cyiza Faida Josue.
+Akazi kawe ni gusubiza ibibazo ku byerekeye Josue hashingiwe ku makuru akurikira:
+${JOSUE_INFO}
+Amategeko:
+- BURI GIHE subiza mu Kinyarwanda.
+- Subiza gusa ibibazo bijyanye na Josue, akazi ke, ubushobozi bwe cyangwa ubuzima bwe bwite.
+- Niba habajijwe ikintu kitajyanye, sema neza ko ushobora gusa gusubiza ibibazo ku byerekeye Josue.
+- Subiza mu magambo make, mu buryo bwiza kandi bifasha.
+- Niba babajije uburyo bwo kumubonana, tanga imeli ye: cfaidajosue@gmail.com`
+};
 
 // POST send a chat message
 router.post('/', async (req, res) => {
   try {
-    const { message, sessionId } = req.body;
+    const { message, sessionId, lang = 'en' } = req.body;
 
     if (!message || !sessionId) {
       return res.status(400).json({ message: 'message and sessionId are required.' });
@@ -44,9 +71,12 @@ router.post('/', async (req, res) => {
     // Add user message to history
     session.messages.push({ role: 'user', content: message });
 
+    // Pick system prompt based on language
+    const systemPrompt = SYSTEM_PROMPTS[lang] || SYSTEM_PROMPTS.en;
+
     // Build messages array for Groq
     const groqMessages = [
-      { role: 'system', content: SYSTEM_PROMPT },
+      { role: 'system', content: systemPrompt },
       ...session.messages.map(m => ({ role: m.role, content: m.content }))
     ];
 
