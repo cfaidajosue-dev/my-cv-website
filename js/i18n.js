@@ -3,6 +3,7 @@ const translations = {
   en: {
     'nav.about':      'About',
     'nav.hobbies':    'Hobbies',
+    'nav.family':     'Family',
     'nav.skills':     'Skills',
     'nav.education':  'Education',
     'nav.projects':   'Projects',
@@ -25,10 +26,13 @@ const translations = {
     'about.info4':    'Aspiring Software Developer',
     'about.info5':    'Not Yet Employed',
 
-    'hobbies.title':       'Hobbies',
-    'hobbies.intro':       'Outside of coding, I love staying active and having fun on the football pitch.',
+    'hobbies.title':       'Hobbies & Interests',
+    'hobbies.intro':       'Outside of coding, I enjoy a variety of activities that keep me inspired and energized.',
     'hobbies.football':    'Football',
     'hobbies.footballDesc':'Playing football is my favourite way to unwind. I enjoy the teamwork, energy, and excitement the game brings.',
+
+    'family.title':        'Family',
+    'family.intro':        'Family is the foundation of who I am. These are the people who inspire and support me every day.',
 
     'contact.title':       'Touch',
     'contact.heading':     'Get In',
@@ -56,7 +60,7 @@ const translations = {
     'edu.desc2':  'Completed foundational courses in programming and computer science fundamentals.',
 
     'proj.cv.title':     'Personal CV Website',
-    'proj.cv.desc':      'A responsive personal portfolio website built with HTML, CSS, and JavaScript to showcase my skills and projects.',
+    'proj.cv.desc':      'A fully responsive personal portfolio website showcasing my skills, projects, and experience. Built with HTML5, CSS3, and vanilla JavaScript with a modern, clean design. Features include smooth animations, dark mode support, and mobile optimization.',
     'proj.school.title': 'School Project',
     'proj.school.desc':  'A software development project built as part of my S5 curriculum, applying programming concepts learned in class.',
     'proj.soon.title':   'More Coming Soon',
@@ -68,11 +72,24 @@ const translations = {
     'chat.online':      'Online',
     'chat.welcome':     "Hi! 👋 I'm Josue's AI assistant. Ask me anything about him — his skills, education, projects, or how to contact him!",
     'chat.placeholder': 'Ask something about Josue...',
+
+    // Dynamic content translations
+    'interest.Music': 'Music',
+    'interest.Entertainment': 'Entertainment',
+    'interest.Sports': 'Sports',
+    'interest.Technology': 'Technology',
+    'interest.Learning': 'Learning',
+    'interest.Creative': 'Creative',
+    'rel.Father': 'Father',
+    'rel.Brother': 'Brother',
+    'rel.Mother': 'Mother',
+    'rel.Sister': 'Sister',
   },
 
   fr: {
     'nav.about':      'À propos',
     'nav.hobbies':    'Loisirs',
+    'nav.family':     'Famille',
     'nav.skills':     'Compétences',
     'nav.education':  'Formation',
     'nav.projects':   'Projets',
@@ -95,10 +112,13 @@ const translations = {
     'about.info4':    'Développeur en devenir',
     'about.info5':    'Pas encore employé',
 
-    'hobbies.title':       'Loisirs',
-    'hobbies.intro':       'En dehors du code, j\'aime rester actif et m\'amuser sur le terrain de football.',
+    'hobbies.title':       'Loisirs et Intérêts',
+    'hobbies.intro':       'En dehors du code, j\'aime diverses activités qui m\'inspirent et m\'énergisent.',
     'hobbies.football':    'Football',
     'hobbies.footballDesc':'Jouer au football est ma façon préférée de me détendre. J\'apprécie le travail d\'équipe, l\'énergie et l\'excitation que le jeu apporte.',
+
+    'family.title':        'Famille',
+    'family.intro':        'La famille est le fondement de qui je suis. Ce sont les personnes qui m\'inspirent et me soutiennent chaque jour.',
 
     'contact.title':       'Contact',
     'contact.heading':     'Prendre',
@@ -135,11 +155,24 @@ const translations = {
     'chat.online':      'En ligne',
     'chat.welcome':     "Salut! 👋 Je suis l'assistant IA de Josue. Posez-moi n'importe quelle question sur lui — ses compétences, sa formation, ses projets ou comment le contacter!",
     'chat.placeholder': 'Posez une question sur Josue...',
+
+    // Dynamic content translations
+    'interest.Music': 'Musique',
+    'interest.Entertainment': 'Divertissement',
+    'interest.Sports': 'Sports',
+    'interest.Technology': 'Technologie',
+    'interest.Learning': 'Apprentissage',
+    'interest.Creative': 'Créatif',
+    'rel.Father': 'Père',
+    'rel.Brother': 'Frère',
+    'rel.Mother': 'Mère',
+    'rel.Sister': 'Sœur',
   },
 
   rw: {
     'nav.about':      'Ibyanjye',
     'nav.hobbies':    'Imyidagaduro',
+    'nav.family':     'Umuryango',
     'nav.skills':     'Ubushobozi',
     'nav.education':  'Amashuri',
     'nav.projects':   'Imishinga',
@@ -162,10 +195,13 @@ const translations = {
     'about.info4':    'Umunyamuryango w\'ikoranabuhanga',
     'about.info5':    'Ntarakora akazi',
 
-    'hobbies.title':       'Imyidagaduro',
-    'hobbies.intro':       'Uretse gukora code, nkunda gukina umupira w\'amaguru.',
+    'hobbies.title':       'Imyidagaduro n\'Ibyifuzo',
+    'hobbies.intro':       'Uretse gukora code, nkunda gukora ibikorwa bitandukanye bifasha kwiyubaka.',
     'hobbies.football':    'Umupira w\'Amaguru',
     'hobbies.footballDesc':'Gukina umupira w\'amaguru ni uburyo nkunda kuruhuka. Nishimira gukorana n\'itsinda, ingufu, n\'ibyishimo umukino utera.',
+
+    'family.title':        'Umuryango',
+    'family.intro':        'Umuryango ni inzira y\'ubwenge bwanjye. Abo ni abantu bafasha no banshimira buri munsi.',
 
     'contact.title':       'Twandikire',
     'contact.heading':     'Tuganire',
@@ -202,6 +238,18 @@ const translations = {
     'chat.online':      'Ahari',
     'chat.welcome':     "Muraho! 👋 Ndi umufasha wa AI wa Josue. Mbaza ikibazo cyose kubyerekeye — ubushobozi bwe, amashuri, imishinga, cyangwa uburyo bwo kumubonana!",
     'chat.placeholder': 'Baza ikibazo ku byerekeye Josue...',
+
+    // Dynamic content translations
+    'interest.Music': 'Imigani',
+    'interest.Entertainment': 'Ibikunzira',
+    'interest.Sports': 'Siporo',
+    'interest.Technology': 'Ikoranabuhanga',
+    'interest.Learning': 'Kwiga',
+    'interest.Creative': 'Ubwenge',
+    'rel.Father': 'Nyina',
+    'rel.Brother': 'Muryango',
+    'rel.Mother': 'Nyina',
+    'rel.Sister': 'Mushiki',
   }
 };
 
@@ -259,6 +307,53 @@ function applyTranslation(lang) {
 
   // Save preference
   localStorage.setItem('lang', lang);
+  
+  // Translate dynamic content
+  translateDynamicContent(lang);
+  
+  // Reload translations for dynamically loaded content
+  if (window.reloadTranslations) {
+    window.reloadTranslations(lang);
+  }
+}
+
+// ===== TRANSLATE DYNAMIC CONTENT =====
+function translateDynamicContent(lang) {
+  const t = translations[lang];
+  if (!t) return;
+
+  // Translate project titles and descriptions
+  document.querySelectorAll('.project-card h3').forEach(el => {
+    const text = el.textContent.trim();
+    if (text === 'Personal CV Website') el.textContent = t['proj.cv.title'] || text;
+    if (text === 'More Coming Soon') el.textContent = t['proj.soon.title'] || text;
+  });
+
+  document.querySelectorAll('.project-card > p').forEach(el => {
+    const text = el.textContent.trim();
+    if (text.includes('fully responsive personal portfolio')) el.textContent = t['proj.cv.desc'] || text;
+    if (text.includes('always working on new projects')) el.textContent = t['proj.soon.desc'] || text;
+  });
+
+  // Translate project tags
+  document.querySelectorAll('.project-tags span').forEach(el => {
+    const text = el.textContent.trim();
+    if (text === 'In Progress') el.textContent = t['proj.soon.tag'] || text;
+  });
+
+  // Translate hobby/interest titles
+  document.querySelectorAll('.hobby-card h3').forEach(el => {
+    const text = el.textContent.trim();
+    const key = 'interest.' + text;
+    if (t[key]) el.textContent = t[key];
+  });
+
+  // Translate family member relationships
+  document.querySelectorAll('.family-relationship').forEach(el => {
+    const text = el.textContent.trim();
+    const key = 'rel.' + text;
+    if (t[key]) el.textContent = t[key];
+  });
 }
 
 // ===== LANG SWITCHER TOGGLE =====
@@ -275,7 +370,8 @@ document.addEventListener('click', () => langSwitcher.classList.remove('open'));
 
 document.querySelectorAll('.lang-option').forEach(btn => {
   btn.addEventListener('click', () => {
-    applyTranslation(btn.getAttribute('data-lang'));
+    const selectedLang = btn.getAttribute('data-lang');
+    applyTranslation(selectedLang);
     langSwitcher.classList.remove('open');
   });
 });

@@ -298,8 +298,73 @@ async function loadProfileData() {
       ? 'http://localhost:3000/api/profile'
       : '/api/profile';
     const response = await fetch(url);
-    if (!response.ok) return; // silently fail, static content stays
+    if (!response.ok) return;
     const profile = await response.json();
+
+    // Update hobbies/interests dynamically
+    if (profile.interests && profile.interests.length > 0) {
+      const hobbiesGrid = document.getElementById('hobbiesGrid');
+      if (hobbiesGrid) {
+        const iconMap = {
+          'Music': 'fa-music',
+          'Entertainment': 'fa-film',
+          'Sports': 'fa-futbol',
+          'Technology': 'fa-laptop-code',
+          'Learning': 'fa-book',
+          'Creative': 'fa-palette'
+        };
+
+        hobbiesGrid.innerHTML = profile.interests.map(interest => {
+          const icon = iconMap[interest.category] || 'fa-star';
+          return `
+            <div class="hobby-card">
+              <div class="hobby-icon-wrap"><i class="fas ${icon}"></i></div>
+              <h3>${interest.category}</h3>
+              <p>${interest.items.join(', ')}</p>
+            </div>
+          `;
+        }).join('');
+
+        document.querySelectorAll('.hobby-card').forEach(el => {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(30px)';
+          el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          revealObserver.observe(el);
+        });
+      }
+    }
+
+    // Update family information dynamically
+    if (profile.family && profile.family.length > 0) {
+      const familyGrid = document.getElementById('familyGrid');
+      if (familyGrid) {
+        const relationshipIconMap = {
+          'Father': 'fa-user-tie',
+          'Brother': 'fa-user',
+          'Mother': 'fa-user',
+          'Sister': 'fa-user'
+        };
+
+        familyGrid.innerHTML = profile.family.map(member => {
+          const icon = relationshipIconMap[member.relationship] || 'fa-user';
+          return `
+            <div class="family-card">
+              <div class="family-icon"><i class="fas ${icon}"></i></div>
+              <h3>${member.name}</h3>
+              <p class="family-relationship">${member.relationship}</p>
+              <p class="family-description">${member.description}</p>
+            </div>
+          `;
+        }).join('');
+
+        document.querySelectorAll('.family-card').forEach(el => {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(30px)';
+          el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          revealObserver.observe(el);
+        });
+      }
+    }
 
     // Update skills dynamically
     if (profile.skills && profile.skills.length > 0) {
@@ -316,13 +381,11 @@ async function loadProfileData() {
           </div>
         `).join('');
 
-        // Re-observe skill bars after dynamic load
         document.querySelectorAll('.skill-fill').forEach(fill => {
           fill.style.width = '0';
           skillObserver.observe(fill);
         });
 
-        // Re-observe cards for reveal animation
         document.querySelectorAll('.skill-card').forEach(el => {
           el.style.opacity = '0';
           el.style.transform = 'translateY(30px)';
@@ -344,7 +407,7 @@ async function loadProfileData() {
             <div class="project-tags">
               ${project.tags.map(tag => `<span>${tag}</span>`).join('')}
             </div>
-            ${project.link ? `<a href="${project.link}" target="_blank" class="btn btn-outline" style="margin-top:1rem;font-size:0.8rem;padding:0.4rem 1rem;">View Project</a>` : ''}
+            ${project.link ? `<a href="${project.link}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:1rem;display:inline-flex;align-items:center;gap:0.5rem;"><i class="fas fa-external-link-alt"></i> View Project</a>` : ''}
           </div>
         `).join('') + `
           <div class="project-card add-project">
@@ -364,10 +427,26 @@ async function loadProfileData() {
       }
     }
 
+    // Re-apply translations to dynamic content
+    const currentLang = localStorage.getItem('lang') || 'en';
+    setTimeout(() => {
+      if (window.translateDynamicContent) {
+        window.translateDynamicContent(currentLang);
+      }
+    }, 100);
+
   } catch (err) {
-    // Backend not running — static content is shown as fallback
     console.log('Backend not available, using static content.');
   }
 }
 
 loadProfileData();
+
+// ===== RELOAD TRANSLATIONS ON LANGUAGE CHANGE =====
+window.reloadTranslations = function(lang) {
+  setTimeout(() => {
+    if (window.translateDynamicContent) {
+      window.translateDynamicContent(lang);
+    }
+  }, 50);
+};

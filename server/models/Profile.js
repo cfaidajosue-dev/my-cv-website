@@ -31,6 +31,19 @@ const profileSchema = new mongoose.Schema({
       tags: [String],
       link: { type: String }
     }
+  ],
+  interests: [
+    {
+      category: { type: String },
+      items: [String]
+    }
+  ],
+  family: [
+    {
+      name: { type: String },
+      relationship: { type: String },
+      description: { type: String }
+    }
   ]
 }, { timestamps: true });
 

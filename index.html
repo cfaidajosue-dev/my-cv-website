@@ -16,6 +16,7 @@
     <ul class="nav-links">
       <li><a href="#about" data-i18n="nav.about">About</a></li>
       <li><a href="#hobbies" data-i18n="nav.hobbies">Hobbies</a></li>
+      <li><a href="#family" data-i18n="nav.family">Family</a></li>
       <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
       <li><a href="#education" data-i18n="nav.education">Education</a></li>
       <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
@@ -128,32 +129,26 @@
   <!-- HOBBIES -->
   <section class="section section-alt" id="hobbies">
     <div class="container">
-      <h2 class="section-title">My <span data-i18n="hobbies.title">Hobbies</span></h2>
-      <p class="hobbies-intro" data-i18n="hobbies.intro">Outside of coding, I love staying active and having fun on the football pitch.</p>
-      <div class="hobbies-grid">
+      <h2 class="section-title">My <span data-i18n="hobbies.title">Hobbies & Interests</span></h2>
+      <p class="hobbies-intro" data-i18n="hobbies.intro">Outside of coding, I enjoy a variety of activities that keep me inspired and energized.</p>
+      <div class="hobbies-grid" id="hobbiesGrid">
+        <!-- Dynamically loaded from database -->
         <div class="hobby-card hobby-main">
           <div class="hobby-icon-wrap"><i class="fas fa-futbol"></i></div>
-          <h3 data-i18n="hobbies.football">Football</h3>
-          <p data-i18n="hobbies.footballDesc">Playing football is my favourite way to unwind. I enjoy the teamwork, energy, and excitement the game brings.</p>
+          <h3>Football</h3>
+          <p>Playing football is my favourite way to unwind. I enjoy the teamwork, energy, and excitement the game brings.</p>
         </div>
-        <div class="football-images">
-          <div class="football-img-card">
-            <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=400&q=80" alt="Football match" />
-            <div class="img-overlay"><span>The Beautiful Game</span></div>
-          </div>
-          <div class="football-img-card">
-            <img src="https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=400&q=80" alt="Football players" />
-            <div class="img-overlay"><span>Teamwork</span></div>
-          </div>
-          <div class="football-img-card">
-            <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=400&q=80" alt="Football stadium" />
-            <div class="img-overlay"><span>The Pitch</span></div>
-          </div>
-          <div class="football-img-card">
-            <img src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=400&q=80" alt="Football skills" />
-            <div class="img-overlay"><span>Skills & Passion</span></div>
-          </div>
-        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAMILY -->
+  <section class="section" id="family">
+    <div class="container">
+      <h2 class="section-title">My <span data-i18n="family.title">Family</span></h2>
+      <p class="family-intro" data-i18n="family.intro">Family is the foundation of who I am. These are the people who inspire and support me every day.</p>
+      <div class="family-grid" id="familyGrid">
+        <!-- Dynamically loaded from database -->
       </div>
     </div>
   </section>
