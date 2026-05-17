@@ -291,6 +291,43 @@ window.addEventListener('scroll', () => {
   });
 });
 
+// ===== SKILL MODAL =====
+const skillModal = document.getElementById('skillModal');
+const skillModalClose = document.getElementById('skillModalClose');
+
+function openSkillModal(skill) {
+  document.getElementById('skillModalTitle').textContent = skill.name;
+  document.getElementById('skillModalCategory').textContent = skill.category;
+  document.getElementById('skillModalLevel').textContent = skill.level + '%';
+  document.getElementById('skillModalDescription').textContent = skill.description || 'No description available';
+  document.getElementById('skillModalExperience').textContent = skill.experience || 'No experience details available';
+  
+  const fillEl = document.getElementById('skillModalFill');
+  fillEl.style.width = '0';
+  setTimeout(() => {
+    fillEl.style.width = skill.level + '%';
+  }, 100);
+  
+  skillModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSkillModal() {
+  skillModal.classList.remove('open');
+  document.body.style.overflow = 'auto';
+}
+
+skillModalClose.addEventListener('click', closeSkillModal);
+skillModal.addEventListener('click', (e) => {
+  if (e.target === skillModal) closeSkillModal();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && skillModal.classList.contains('open')) {
+    closeSkillModal();
+  }
+});
+
 // ===== LOAD CV DATA FROM MONGODB =====
 async function loadProfileData() {
   try {
@@ -371,7 +408,7 @@ async function loadProfileData() {
       const skillsGrid = document.querySelector('.skills-grid');
       if (skillsGrid) {
         skillsGrid.innerHTML = profile.skills.map(skill => `
-          <div class="skill-card">
+          <div class="skill-card" data-skill='${JSON.stringify(skill)}'>
             <div class="skill-icon"><i class="fas fa-code"></i></div>
             <h3>${skill.name}</h3>
             <p>${skill.category}</p>
@@ -391,6 +428,12 @@ async function loadProfileData() {
           el.style.transform = 'translateY(30px)';
           el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
           revealObserver.observe(el);
+          
+          // Add click handler for skill modal
+          el.addEventListener('click', () => {
+            const skillData = JSON.parse(el.getAttribute('data-skill'));
+            openSkillModal(skillData);
+          });
         });
       }
     }

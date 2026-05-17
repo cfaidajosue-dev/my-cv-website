@@ -12,7 +12,9 @@ const profileSchema = new mongoose.Schema({
     {
       name: { type: String },
       category: { type: String },
-      level: { type: Number, min: 0, max: 100 }
+      level: { type: Number, min: 0, max: 100 },
+      description: { type: String },
+      experience: { type: String }
     }
   ],
   education: [

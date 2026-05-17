@@ -11,18 +11,18 @@ async function seedProfile() {
     github: 'https://github.com/cyizafaida',
     linkedin: 'https://linkedin.com/in/cyizafaida',
     skills: [
-      { name: 'HTML5',          category: 'Frontend',     level: 85 },
-      { name: 'CSS3',           category: 'Frontend',     level: 80 },
-      { name: 'JavaScript',     category: 'Frontend',     level: 75 },
-      { name: 'React',          category: 'Frontend',     level: 70 },
-      { name: 'Python',         category: 'Programming',  level: 80 },
-      { name: 'Node.js',        category: 'Backend',      level: 75 },
-      { name: 'Express.js',     category: 'Backend',      level: 72 },
-      { name: 'MongoDB',        category: 'Database',     level: 70 },
-      { name: 'SQL',            category: 'Database',     level: 68 },
-      { name: 'Git & GitHub',   category: 'Tools',        level: 78 },
-      { name: 'REST APIs',      category: 'Backend',      level: 72 },
-      { name: 'Responsive Design', category: 'Frontend',  level: 80 }
+      { name: 'HTML5',          category: 'Frontend',     level: 85, description: 'Semantic HTML5 markup', experience: 'Built multiple responsive websites with proper semantic structure and accessibility standards.' },
+      { name: 'CSS3',           category: 'Frontend',     level: 80, description: 'Modern CSS with animations', experience: 'Created responsive designs with Flexbox, Grid, and CSS animations. Experienced with dark mode and theme switching.' },
+      { name: 'JavaScript',     category: 'Frontend',     level: 75, description: 'ES6+ and DOM manipulation', experience: 'Proficient in vanilla JavaScript, async/await, and DOM APIs. Built interactive web applications and animations.' },
+      { name: 'React',          category: 'Frontend',     level: 70, description: 'Component-based UI library', experience: 'Experience with functional components, hooks, and state management. Built reusable component libraries.' },
+      { name: 'Python',         category: 'Programming',  level: 80, description: 'General-purpose programming', experience: 'Strong foundation in Python for scripting, data analysis, and backend development. Familiar with popular libraries.' },
+      { name: 'Node.js',        category: 'Backend',      level: 75, description: 'JavaScript runtime for servers', experience: 'Built RESTful APIs and server applications. Experienced with Express.js and middleware development.' },
+      { name: 'Express.js',     category: 'Backend',      level: 72, description: 'Web application framework', experience: 'Created robust backend services with routing, middleware, and error handling. Implemented authentication systems.' },
+      { name: 'MongoDB',        category: 'Database',     level: 70, description: 'NoSQL document database', experience: 'Designed and implemented MongoDB schemas. Experienced with aggregation pipelines and indexing.' },
+      { name: 'SQL',            category: 'Database',     level: 68, description: 'Relational database queries', experience: 'Proficient in writing complex SQL queries, joins, and database optimization techniques.' },
+      { name: 'Git & GitHub',   category: 'Tools',        level: 78, description: 'Version control system', experience: 'Daily use of Git for version control. Experienced with branching, merging, and collaborative workflows.' },
+      { name: 'REST APIs',      category: 'Backend',      level: 72, description: 'API design and development', experience: 'Designed and implemented RESTful APIs following best practices. Experienced with API documentation and testing.' },
+      { name: 'Responsive Design', category: 'Frontend',  level: 80, description: 'Mobile-first design approach', experience: 'Created fully responsive websites that work seamlessly across all devices and screen sizes.' }
     ],
     education: [
       {

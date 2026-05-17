@@ -157,53 +157,43 @@
   <section class="section section-alt" id="skills">
     <div class="container">
       <h2 class="section-title">My <span data-i18n="nav.skills">Skills</span></h2>
-      <div class="skills-grid">
-
-        <div class="skill-card">
-          <div class="skill-icon"><i class="fab fa-html5"></i></div>
-          <h3>HTML</h3>
-          <p data-i18n="skill.html">Building structured web pages</p>
-          <div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
-          <h3>CSS</h3>
-          <p data-i18n="skill.css">Styling and responsive design</p>
-          <div class="skill-bar"><div class="skill-fill" data-width="75%"></div></div>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-icon"><i class="fab fa-js"></i></div>
-          <h3>JavaScript</h3>
-          <p data-i18n="skill.js">Adding interactivity to websites</p>
-          <div class="skill-bar"><div class="skill-fill" data-width="65%"></div></div>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-icon"><i class="fab fa-python"></i></div>
-          <h3>Python</h3>
-          <p data-i18n="skill.python">Programming logic and scripting</p>
-          <div class="skill-bar"><div class="skill-fill" data-width="70%"></div></div>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-icon"><i class="fas fa-database"></i></div>
-          <h3>Databases</h3>
-          <p data-i18n="skill.db">Basic SQL and data management</p>
-          <div class="skill-bar"><div class="skill-fill" data-width="60%"></div></div>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
-          <h3>Git</h3>
-          <p data-i18n="skill.git">Version control basics</p>
-          <div class="skill-bar"><div class="skill-fill" data-width="55%"></div></div>
-        </div>
-
+      <p class="skills-intro">Click on any skill to view detailed information</p>
+      <div class="skills-grid" id="skillsGrid">
+        <!-- Dynamically loaded from database -->
       </div>
     </div>
   </section>
+
+  <!-- SKILL DETAIL MODAL -->
+  <div class="skill-modal" id="skillModal">
+    <div class="skill-modal-content">
+      <button class="skill-modal-close" id="skillModalClose">&times;</button>
+      <div class="skill-modal-header">
+        <div class="skill-modal-icon"><i class="fas fa-code"></i></div>
+        <div>
+          <h2 id="skillModalTitle">Skill Name</h2>
+          <p id="skillModalCategory" class="skill-modal-category">Category</p>
+        </div>
+      </div>
+      <div class="skill-modal-body">
+        <div class="skill-modal-section">
+          <h3>Proficiency Level</h3>
+          <div class="skill-modal-bar">
+            <div class="skill-modal-fill" id="skillModalFill"></div>
+          </div>
+          <p id="skillModalLevel">85%</p>
+        </div>
+        <div class="skill-modal-section">
+          <h3>Description</h3>
+          <p id="skillModalDescription">Skill description goes here</p>
+        </div>
+        <div class="skill-modal-section">
+          <h3>Experience</h3>
+          <p id="skillModalExperience">Details about experience with this skill</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- EDUCATION -->
   <section class="section" id="education">
